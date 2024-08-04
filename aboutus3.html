@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Existing CSS */
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+        header {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .header-top h1 {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        nav {
+            background-color: #0072ff;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: black;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links .dropdown i {
+            margin-left: 5px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .shift-left, .shift-right {
+            border-radius: 50%;
+            height: 320px;
+            width: 320px;
+            object-fit: cover;
+            border: 5px solid white; /* First border */
+            box-shadow: 0 0 0 5px #0056b3; /* Second border */
+        }
+
+        .shift-left {
+            transform: translateX(-70px) rotate(0deg);
+            height: 400px;
+            width: 400px;
+            margin-top: 50px;
+        }
+
+        .shift-right {
+            transform: translateX(75px) rotate(0deg);
+            height: 400px;
+            width: 400px;
+            margin-top: 50px;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .circle {
+            position: absolute;
+            background-color: #0056b3;
+            height: 500px;
+            width: 500px;
+            border-radius: 50%;
+            opacity: 0.45; /* Adjust the value to control transparency */
+            border: 5px solid white; /* First border */
+            box-shadow: 0 0 0 5px rgb(39, 8, 112); /* Second border */
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle p {
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            max-width: 80%;
+        }
+
+        .image-container {
+            position: relative;
+            z-index: 2;
+            margin-top: 30px;
+        }
+
+        .accordion-wrapper {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .accordion-wrapper .parent-tab {
+            margin-bottom: 8px;
+            border-radius: 3px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.18);
+        }
+
+        .accordion-wrapper .parent-tab label {
+            background: #007bff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border-radius: 3px;
+            position: relative;
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-wrapper .parent-tab label:hover {
+            background: #006fe6;
+        }
+
+        .parent-tab input:checked ~ label {
+            border-radius: 3px 3px 0 0;
+            background: #006fe6;
+        }
+
+        .accordion-wrapper label span {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            text-shadow: 0 -1px 1px #0056b3;
+        }
+
+        .parent-tab label .icon {
+            position: relative;
+            height: 30px;
+            width: 30px;
+            font-size: 15px;
+            color: #007bff;
+            display: block;
+            background: #fff;
+            border-radius: 50%;
+            text-shadow: 0 -1px 1px #0056b3;
+        }
+
+        .parent-tab label .icon i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .parent-tab input:checked ~ label .icon i:before {
+            content: "\f068";
+        }
+
+        .accordion-wrapper .parent-tab .content {
+            max-height: 0px;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 0 0 3px 3px;
+            transition: all 0.4s ease;
+        }
+
+        .parent-tab input:checked ~ .content {
+            max-height: 100vh;
+            padding: 15px 20px;
+        }
+
+        .parent-tab .content p {
+            font-size: 16px;
+        }
+
+        .parent-tab .content img {
+            width: 100%; /* Adjust width as needed */
+            height: auto;
+            border-radius: 8px; /* Optional: to add rounded corners */
+            margin-top: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        footer {
+            background-color: #4A6ED3;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid white;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <h1>Promoting Peace, Justice, and Strong Institutions Worldwide</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">About Us <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="aboutus1.html">Who We Are</a>
+                        <a href="aboutus2.html">What We Do</a>
+                        <a href="aboutus3.html">Our Vision</a>
+                        <a href="aboutus4.html">Join US</a>
+
+                    </div>
+                </li>
+                <li><a href="initative.html">Initiatives</a></li>
+                <li><a href="form.html">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header end -->
+    <div class="container">
+        <div class="circle">
+            <p style="margin-top: -170px; height:250px; width:190px;">In our vision for the future, peace and justice reign supreme, guiding humanity towards unity and prosperity.</p>
+        </div>
+        <div class="image-container">
+            <img src="v1.jpg" alt="" class="shift-left">
+            <img src="v3.jpg" alt="" class="shift-right">
+        </div> 
+    </div>
+
+    <!-- Start of Accordion Section -->
+     <h1 style="text-align: center;margin-top:70px;
+     margin-bottom:20px;border-bottom-style:double;
+     border-width:6.5px; 
+     border-color: rgb(69, 69, 228);">Our Vision</h1>
+    <div class="wrapper" style="margin-top: 50px;margin-bottom: 90px;margin-left: 270px;">
+        <div class="accordion-wrapper">
+            <div style="margin-left:-280px; margin-bottom:-100px;"><img src="justi2 (2).jpeg" alt="" height="150px" width="150px"></div>
+            <div class="parent-tab" style="margin-bottom: 30px;width:740px;">
+                <input type="checkbox" id="tab1">
+                <label for="tab1"style="height: 60px;">
+                    <span style="font-size: 25px;">peace</span>
+                    <div class="icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </label>
+                <div class="content">
+                    <p>Our vision of peace involves bringing people 
+                        together to work towards common goals. By 
+                        encouraging collaboration, we strive to create
+                        a sense of unity and collective effort in building
+                        a peaceful society.</p>
+                </div>
+            </div>
+            <div style="margin-left:-280px; margin-bottom:-132px;"><img src="justi2 (1).jpeg" alt="" height="150px" width="150px"></div>
+            <div class="parent-tab" style="margin-bottom: 27px; width:740px; margin-top:10px;">
+                <input type="checkbox" id="tab2" >
+                <label for="tab2"style="height: 60px;">
+                    <span style="font-size: 25px;">Justice</span>
+                    <div class="icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </label>
+                <div class="content">
+                    <p>Our vision of justice includes treating every individual
+                        with dignity and respect. We strive to create an environment
+                        where everyone's rights are upheld, and where people can seek 
+                        and obtain justice without fear of retribution or discrimination.</p>
+                </div>
+            </div>
+            <div style="margin-left:-280px; margin-bottom:-130px; margin-top:60px;"><img src="justi.jpeg" alt="" height="150px" width="150px"></div>
+            <div class="parent-tab" style=" width:740px;">
+                <input type="checkbox" id="tab3">
+                <label for="tab3" style="height: 60px;">
+                    <span style="font-size: 25px;">strong Intitution</span>
+                    <div class="icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </label>
+                <div class="content">
+                    <p>>We support the development of institutions
+                        that operate with transparency and accountability.
+                        This means advocating for open government practices,
+                        ethical standards, and mechanisms that hold public 
+                        officials and institutions accountable for their actions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Accordion Section -->
+
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html">News</a></li>
+              <li><a href="aboutus1.html">About Us</a></li>
+              <li><a href="initative.html">Initiatives</a></li>
+              <li><a href="form.html">Get Involved</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 style="text-align: center;">About Us</h3>
+            <p style="text-align: center;">Our mission is to promote peace, justice, and strong institutions worldwide. We believe in the power of communities to drive change and make the world a better place for all.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact info.</h3>
+            <ul>
+              <li><i class="fas fa-phone"></i> Phone No.</li>
+              <li><i class="fas fa-envelope"></i> Emails</li>
+              <li><i class="fab fa-instagram"></i> Instagram</li>
+              <li><i class="fas fa-map-marker-alt"></i> Address</li>
+            </ul>
+          </div>
+        
+        </div>
+        <div class="footer-bottom">
+          <h4>Presented by Frontend Force</p></h4>
+          
+          <p> <b>Team Member: </b>Sunil Sawlani, Harsh Lalwani, Harsh Pareek, Simran HimmatSinghani, Ruchi Bhagtani, Daksh Sharma, Palak Ganwani, Shree Radhika Khandelwal</p>
+        </div>
+      </footer>
+    <!-- footer end -->
+
+</body>
+</html>

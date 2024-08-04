@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+   body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+        header {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .header-top h1 {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        nav {
+            background-color: #0072ff;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: black;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links .dropdown i {
+            margin-left: 5px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .circle {
+            background-color: #0056b3;
+            height: 480px;
+            width: 810px;
+            border-radius: 50%;
+            opacity: 0.45; /* Adjust the value to control transparency */
+            margin-top:5px;
+            margin-left:-450px;
+            border: 2px solid rgb(39, 8, 112);
+        }
+
+        .quote {
+           font-size: 35px;
+           height: 200px;
+           width: 290px;
+           margin-top:-350px;
+           margin-left:34px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px;
+            margin-top: 130px;
+        }
+
+        .para {
+            width: 100%;
+            font-size: 20px;
+            padding: 10px;
+            border-right: 0px;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .para table {
+            width: 100%;
+        }
+
+        .para th, .para td {
+            border: 1px solid #0073e6;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .para th {
+            background-color: #0073e6;
+            color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+       section h1 {
+            color: #0073e6;
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .photo-cell img {
+            width: 100%;
+            height: 300px;
+        }
+        .marquee {
+            width: 100vw;
+            height: 30vh;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+        }
+        .marquee-content {
+            display: flex;
+            animation: scrolling 10s linear infinite;
+        }
+        .marquee-content img {
+            width: 150px;
+            height: 100px;
+            margin-right: 10px;
+            border: solid black;
+            flex-shrink: 0;
+        }
+        @keyframes scrolling {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        footer {
+            background-color: #4A6ED3;
+            color: white;
+            padding: 20px 0;
+        }
+  
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 20px;
+        }
+  
+        .footer-section {
+            flex: 1;
+            padding: 0 20px;
+        }
+  
+        .footer-section h3 {
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+  
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+  
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+  
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+  
+        .footer-section ul li i {
+            margin-right: 10px;
+        }
+  
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+  
+        .footer-logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+  
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid white;
+            padding-top: 10px;
+        }
+        /* footer css end */
+
+        /* Additional styles for double border */
+        .bordered-image {
+            border: 4px double #1805bd;
+            padding: 3px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <h1>Promoting Peace, Justice, and Strong Institutions Worldwide</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">About Us <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="aboutus1.html">Who We Are</a>
+                        <a href="aboutus2.html">What We Do</a>
+                        <a href="aboutus3.html">Our Vision</a>
+                        <a href="aboutus4.html">Join US</a>
+
+                    </div>
+                </li>
+                <li><a href="initative.html">Initiatives</a></li>
+                <li><a href="form.html">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+    <div style="margin-left:0; float: right; margin-top:40px;">
+        <div class="bordered-image">
+            <img src="peace2.jpeg" alt="" height="400px" width="606px">
+        </div>
+    </div>
+    <div class="circle"></div>
+    <div class="quote">
+        <table>
+            <tr>
+                <td>
+                    "Peace is not the absence of conflict, but the presence of justice."
+                    — Martin Luther King Jr.
+                </td>
+            </tr>
+        </table>
+    </div>   
+    
+    <div class="content">
+        <div class="para">
+            <h2 style="font-size: 3rem;border-bottom-style:double; border-width:6.5px; border-color: rgb(69, 69, 228);">What we do?</h2>
+            <table>
+                <tr>
+                    <th>Advocacy and Awareness</th>
+                    <th>Community Engagement</th>
+                    <th>Support and Empowerment</th>
+                </tr>
+                <tr class="photo-cell">
+                    <td><img src="wwd4.jpg" alt="Advocacy and Awareness"></td>
+                    <td><img src="wwd2.jpg" alt="Community Engagement"></td>
+                    <td><img src="wwd1.jpg" alt="Support and Empowerment"></td>
+                </tr>
+                <tr>
+                    <td>We raise awareness about issues related to peace, justice, and governance through educational programs, workshops, and public campaigns.</td>
+                    <td>We organize community events and discussions both offline and online to bring people together and foster a sense of solidarity and mutual understanding.</td>
+                    <td>We offer resources, training, and support to individuals and groups working towards social justice and institutional reform.</td>
+                </tr>
+                <tr>
+                    <td>We advocate for policies that promote equality, human rights, and institutional integrity.</td>
+                    <td>Our initiatives aim to build strong, resilient communities that support each other.</td>
+                    <td>Our goal is to empower people to take action and make a difference in their communities.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            
+            <img src="mg2.jpeg" alt="Photo 2">
+            <img src="mg3.jpeg" alt="Photo 3">
+            <img src="mg4.jpeg" alt="Photo 4">
+            <img src="mg5.jpeg" alt="Photo 5">
+            <img src="mg6.jpeg" alt="Photo 6">
+            <img src="mg7.jfif" alt="Photo 6">
+            <img src="mg8.jfif" alt="Photo 6">
+            <img src="wwd1.jpg" alt="">
+            <img src="wwd2.jpg" alt="">
+            <img src="wwd3.jpg" alt="">
+            <img src="wwd4.jpg" alt="">
+            <img src="wwd5.jpg" alt="">
+            <img src="wwd6.jpg" alt="">
+            <img src="WhatsApp Image 2024-07-14 at 2.29.17 AM.jpeg" alt="">
+            <img src="WhatsApp Image 2024-07-14 at 2.29.17 AM (1).jpeg" alt="">
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">News</a></li>
+          <li><a href="aboutus1.html">About Us</a></li>
+          <li><a href="initative.html">Initiatives</a></li>
+          <li><a href="form.html">Get Involved</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 style="text-align: center;">About Us</h3>
+        <p style="text-align: center;">Our mission is to promote peace, justice, and strong institutions worldwide. We believe in the power of communities to drive change and make the world a better place for all.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact info.</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> Phone No.</li>
+          <li><i class="fas fa-envelope"></i> Emails</li>
+          <li><i class="fab fa-instagram"></i> Instagram</li>
+          <li><i class="fas fa-map-marker-alt"></i> Address</li>
+        </ul>
+      </div>
+    
+    </div>
+    <div class="footer-bottom">
+      <h4>Presented by Frontend Force</p></h4>
+      
+      <p> <b>Team Member: </b>Sunil Sawlani, Harsh Lalwani, Harsh Pareek, Simran HimmatSinghani, Ruchi Bhagtani, Daksh Sharma, Palak Ganwani, Shree Radhika Khandelwal</p>
+    </div>
+  </footer>
+  <!-- footer end --> 
+
+</body>
+</html>

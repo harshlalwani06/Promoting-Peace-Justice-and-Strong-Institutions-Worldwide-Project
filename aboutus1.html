@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+        header {
+            background-color: #0056b3;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background-color: #00438a;
+            color: #fff;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .header-top h1 {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        nav {
+            background-color: #0072ff;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: black;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links .dropdown i {
+            margin-left: 5px;
+        }
+        
+        .logo {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .para1 {
+            border: 4px solid rgb(38, 3, 196);
+            font-size: 15px;
+            padding: 10px;
+            margin-left: 0px;
+        }
+
+        .para2 {
+            width: 40vw;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+            align-items: center;
+            padding: 0px;
+            margin-left: 80px;
+            margin-top: 50px;
+        }
+
+        .para {
+            width: 57%;
+            font-size: 20px;
+            padding: 10px;
+            border-style: double;
+            border-width: 6.5px;
+            border-color: rgb(28, 28, 185);
+            height: 408px;
+            border-right: 0px;
+            margin-right: -400px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+       .para1 h1 {
+            color: #0073e6;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .slider-container {
+            width: 500px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .slider {
+            width: 50vw;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-style: double;
+            border-width: 6.5px;
+            border-color: rgb(8, 26, 141);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 4000px;
+        }
+
+        .slides img {
+            width: 800px;
+            border: none;
+            height: 600px;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-40%);
+        }
+
+        .prev, .next {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .fullimg {
+            width: 97.38vw;
+            height: 350px;
+        }
+
+        footer {
+            background-color: #4A6ED3;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid white;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <h1>Promoting Peace, Justice, and Strong Institutions Worldwide</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">About Us <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="aboutus1.html">Who We Are</a>
+                        <a href="aboutus2.html">What We Do</a>
+                        <a href="aboutus3.html">Our Vision</a>
+                        <a href="aboutus4.html">Join US</a>
+
+                    </div>
+                </li>
+                <li><a href="initative.html">Initiatives</a></li>
+                <li><a href="form.html">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div style="margin-top:20px;"><img src="mg2.jpeg" class="fullimg" alt="Full Width Image"></div>
+
+    <table class="para1">
+        <tr>
+            <td>
+                <h1>Our Summary</h1>
+                <p style="width: 450px; margin-right: 30px;">
+                    We are specifically a dedicated non-profit organization and a group of undergraduates started this website as a source for connecting more and more people, especially youth. We are initially 8 friends together done a presentation on promoting Peace, Justice, And Strong Institutions in our college, then slowly and gradually we started a community called “WELFARE WARRIORS”. Now we are a community of around 80 youths in our area, and we all have come a long way. It has taken us about 2 years to form this community.
+                </p>
+            </td>
+            <td style="height: 10vh; width: 10vw;">
+                <img src="mg6.jpeg" height="380px" width="500px" alt="">
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slides">
+                            <img src="wwd1.jpg" alt="Image 1">
+                            <img src="wwd2.jpg" alt="Image 2">
+                            <img src="wwd3.jpg" alt="Image 3">
+                            <img src="wwd4.jpg" alt="Image 4">
+                            <img src="wwd5.jpg" alt="Image 5">
+                            <img src="wwd6.jpg" alt="Image 6">
+                        </div>
+                        <div class="navigation">
+                            <button class="prev" onclick="moveSlides(-1)">❮</button>
+                            <button class="next" onclick="moveSlides(1)">❯</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="para2">
+                <h1>Our Values</h1>
+                <p>
+                    <b>Peace:</b> We are committed to promoting non-violence and resolving conflicts through dialogue, understanding, and collaboration. Peace is not just the absence of conflict but the presence of justice and equality.<br><br>
+                    <b>Justice:</b> We strive for a world where everyone is treated with fairness and dignity. Our efforts focus on fighting against systemic inequalities and ensuring that justice is accessible to all.<br><br>
+                    <b>Strong Institutions:</b> We support the development and strengthening of institutions that are transparent, accountable, and inclusive. Strong institutions are the backbone of a just and peaceful society.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <script>
+        let slideIndex = 0;
+
+        function moveSlides(n) {
+            const slides = document.querySelector('.slides');
+            slideIndex += n;
+            if (slideIndex < 0) {
+                slideIndex = slides.children.length - 1;
+            } else if (slideIndex >= slides.children.length) {
+                slideIndex = 0;
+            }
+            slides.style.transform = `translateX(-${slideIndex * 100 / slides.children.length}%)`;
+        }
+
+        function autoSlide() {
+            moveSlides(1);
+        }
+
+        document.querySelector('.prev').addEventListener('click', () => moveSlides(-1));
+        document.querySelector('.next').addEventListener('click', () => moveSlides(1));
+
+        // Set the interval to change slides automatically every 3 seconds
+        setInterval(autoSlide, 3000);
+    </script>
+
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">News</a></li>
+          <li><a href="aboutus1.html">About Us</a></li>
+          <li><a href="initative.html">Initiatives</a></li>
+          <li><a href="form.html">Get Involved</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 style="text-align: center;">About Us</h3>
+        <p style="text-align: center;">Our mission is to promote peace, justice, and strong institutions worldwide. We believe in the power of communities to drive change and make the world a better place for all.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact info.</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> Phone No.</li>
+          <li><i class="fas fa-envelope"></i> Emails</li>
+          <li><i class="fab fa-instagram"></i> Instagram</li>
+          <li><i class="fas fa-map-marker-alt"></i> Address</li>
+        </ul>
+      </div>
+    
+    </div>
+    <div class="footer-bottom">
+      <h4>Presented by Frontend Force</p></h4>
+      
+      <p> <b>Team Member: </b>Sunil Sawlani, Harsh Lalwani, Harsh Pareek, Simran HimmatSinghani, Ruchi Bhagtani, Daksh Sharma, Palak Ganwani, Shree Radhika Khandelwal</p>
+    </div>
+  </footer>
+</body>
+</html>

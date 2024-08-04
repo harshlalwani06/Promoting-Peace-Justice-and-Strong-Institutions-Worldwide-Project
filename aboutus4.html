@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Card Layout</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.7.0/hint.min.css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #f5f5f5;
+    }
+
+    header {
+        background-color: #0056b3;
+        color: white;
+    }
+
+    .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        padding: 10px;
+        width: 100px;
+        height: 100px;
+        margin-right: 15px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .header-top h1 {
+        margin: 0;
+        text-align: center;
+        flex: 1;
+    }
+
+    nav {
+        background-color: #0072ff;
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        position: relative;
+        margin: 0 15px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        color: black;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .nav-links .dropdown i {
+        margin-left: 5px;
+    }
+
+    .wrapper {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        position: relative;
+        width: 250px;
+        height: 350px;
+        background: #000;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    }
+
+    .poster {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .poster::before {
+        content: '';
+        position: absolute;
+        bottom: -45%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: .3s;
+    }
+
+    .card:hover .poster::before {
+        bottom: 0;
+    }
+
+    .poster img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: .3s;
+    }
+
+    .card:hover .poster img {
+        transform: scale(1.1);
+    }
+
+    .details {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 1.5em 1.5em 2em;
+        background: #000a;
+        backdrop-filter: blur(16px) saturate(120%);
+        transition: .3s;
+        color: #fff;
+        z-index: 2;
+    }
+
+    .card:hover .details {
+        bottom: 0;
+    }
+
+    .details h1 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    .details p {
+        font-size: 1em;
+        margin-bottom: 10px;
+        opacity: .6;
+    }
+
+    .details .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .details .buttons a {
+        text-decoration: none;
+        padding: 10px 20px;
+        background: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .details .buttons a:hover {
+        background: #0056b3;
+    }
+
+    footer {
+        background-color: #4A6ED3;
+        color: white;
+        padding: 20px 0;
+        margin-top: auto;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 20px;
+    }
+
+    .footer-section {
+        flex: 1;
+        padding: 0 20px;
+    }
+
+    .footer-section h3 {
+        border-bottom: 1px solid white;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section ul li i {
+        margin-right: 10px;
+    }
+
+    .footer-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        border-top: 1px solid white;
+        padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <h1>Promoting Peace, Justice, and Strong Institutions Worldwide</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">About Us <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="aboutus1.html">Who We Are</a>
+                        <a href="aboutus2.html">What We Do</a>
+                        <a href="aboutus3.html">Our Vision</a>
+                        <a href="aboutus4.html">Join US</a>
+
+                    </div>
+                </li>
+                <li><a href="initative.html">Initiatives</a></li>
+                <li><a href="form.html">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 style="text-align: center; margin-top:20px;
+    margin-bottom:20px;border-bottom-style:double;
+    border-width:6.5px; 
+    border-color: rgb(69, 69, 228); color: #094585;"> JOIN US</h1>
+
+    <div class="wrapper">
+        <div class="card">
+            <div class="poster"><img src="mg6.jpeg" alt="Support Us"></div>
+            <div class="details">
+                <h1>Support Us</h1>
+                <p>On Social Media:</p>
+                <div class="buttons">
+                    <a href="#" class="hint--top" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hint--top" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hint--top" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="poster"><img src="mg5.jpeg" alt="Join Our Community"></div>
+            <div class="details">
+                <h1>Join Our Community</h1>
+                <p>Registration Form:</p>
+                <div class="buttons">
+                    <a href="form.html">Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="poster"><img src="mg4.jpeg" alt="Join Offline Community"></div>
+            <div class="details">
+                <h1>Join Offline Community</h1>
+                <p>Get involved locally! Join our
+                offline community to participate in 
+                events and projects that drive meaningful
+                change. Sign up now and make a difference 
+                in person!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html">News</a></li>
+              <li><a href="aboutus1.html">About Us</a></li>
+              <li><a href="initative.html">Initiatives</a></li>
+              <li><a href="form.html">Get Involved</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 style="text-align: center;">About Us</h3>
+            <p style="text-align: center;">Our mission is to promote peace, justice, and strong institutions worldwide. We believe in the power of communities to drive change and make the world a better place for all.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact info.</h3>
+            <ul>
+              <li><i class="fas fa-phone"></i> Phone No.</li>
+              <li><i class="fas fa-envelope"></i> Emails</li>
+              <li><i class="fab fa-instagram"></i> Instagram</li>
+              <li><i class="fas fa-map-marker-alt"></i> Address</li>
+            </ul>
+          </div>
+        
+        </div>
+        <div class="footer-bottom">
+          <h4>Presented by Frontend Force</p></h4>
+          
+          <p> <b>Team Member: </b>Sunil Sawlani, Harsh Lalwani, Harsh Pareek, Simran HimmatSinghani, Ruchi Bhagtani, Daksh Sharma, Palak Ganwani, Shree Radhika Khandelwal</p>
+        </div>
+      </footer>
+    <!-- footer end -->
+</body>
+</html>
